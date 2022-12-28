@@ -12,7 +12,7 @@
         </form>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Sign out", destroy_user_session_path,  class: "nav-link navall nav_border btn btn-outline-success" %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete,  class: "nav-link navall nav_border btn btn-outline-success" %>
           </li>
 
         <% else %>
