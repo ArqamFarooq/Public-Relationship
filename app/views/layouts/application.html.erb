@@ -14,10 +14,10 @@
   <body class = "gradient">
     <%= render 'dashboard/navbar'%>
     <% if notice %>
-      <p class="notice"><%= notice %></p>
+      <p style="color:white;" class="notice"><%= notice %></p>
     <% end %>
     <% if alert %>
-      <p class="alert"><%= alert %></p>
+      <p style="color:white;" class="alert"><%= alert %></p>
     <% end %>
     <%= yield %>
   </body>
