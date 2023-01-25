@@ -239,6 +239,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actioncable
   bootsnap (>= 1.1.0)
   bootstrap
   byebug
@@ -262,7 +263,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 2.6.5p114
 
 BUNDLED WITH
-   2.1.4
+   2.2.13
