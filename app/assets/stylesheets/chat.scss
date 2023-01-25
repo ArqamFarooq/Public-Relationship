@@ -1,0 +1,24 @@
+.chat-container {
+    display: flex;
+    height: 100%;
+  }
+  
+  .user-list {
+    width: 20%;
+    border-right: 1px solid #ccc;
+  }
+  
+  .chat-box {
+    width: 80%;
+    overflow-y: scroll;
+  }
+  
+  .message-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .message-form input {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
