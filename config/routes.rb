@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  get 'registrations/edit'
   get 'messages/index'
   get 'messages/create'
   get 'messages/new'
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   get 'dashboard/index'
   resources :chats, except: [:edit, :update]
   resources :messages, only: [:create]
