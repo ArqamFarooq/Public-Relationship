@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    byebug
+    
     @user = current_user
     if @user.update_without_password(user_params)
       @user.profile_image = params[:user][:profile_image]

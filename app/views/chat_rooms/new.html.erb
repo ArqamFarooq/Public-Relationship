@@ -1,0 +1,8 @@
+<!-- app/views/chats/new.html.erb -->
+<h1>New Chat</h1>
+
+<%= form_for @chat_room, local: true, method: :post do |form| %>
+  <%= form.label :user_two_id %>
+  <%= form.select :user_two_id, User.pluck(:first_name, :id) %>
+  <%= form.submit %>
+<% end %>

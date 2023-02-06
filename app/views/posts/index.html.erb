@@ -8,7 +8,7 @@
     <% end %>
     <p><%= post.body %></p>
     <% if @chat_room.blank? %>
-      <% @chat_room = ChatRoom.create(post_id: post.id) %>
+      <% @chat_room = ChatRoom.create(post_id: post.user.id, user_one: current_user.id) %>
     <% end %>
     <div id="messages"></div>
     <%= form_tag "/chat_rooms/#{@chat_room.id}/send_message", id: "new_message" do %>
