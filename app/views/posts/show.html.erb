@@ -1,0 +1,15 @@
+<h2><%= @post.title %></h2>
+
+<div class="media-container">
+  <% if @post.images.present? %>
+    <% @post.images.each do |image| %>
+      <%= image_tag image.image_url, class: "post-image" %>
+    <% end %>
+  <% end %>
+  <% if @post.video.present? %>
+    <%= video_tag @post.video_url, width: "500", height: "500", type: "video/mp4", controls: true, autoplay: true %>
+  <% end %>
+</div>
+<p><%= @post.body %></p>
+
+

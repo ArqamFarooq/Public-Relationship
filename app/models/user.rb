@@ -7,4 +7,7 @@ class User < ApplicationRecord
   mount_uploader :profile_image, ImageUploader
   has_and_belongs_to_many :chats
   has_many :messages, through: :chats
+  has_many :posts
+  has_many :msgs
+  has_and_belongs_to_many :chat_rooms
 end
