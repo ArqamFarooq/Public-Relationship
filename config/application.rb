@@ -12,6 +12,18 @@ module PRAdvisor
     config.load_defaults 5.2
     config.autoload_paths << "#{Rails.root}/app/uploaders"
 
+    config.assets.enabled = true
+    config.assets.paths << Rails.root.join("app", "assets", "videos")
+    config.active_storage.service = :local
+    config.active_storage.service = :local
+    config.active_storage.service_configurations = {
+      local: {
+        root: Rails.root.join("storage"),
+        server: Rails.application.secrets.active_storage_server,
+        public: true
+      }
+    }
+    config.autoload_paths += %W(#{config.root}/app/uploaders)
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

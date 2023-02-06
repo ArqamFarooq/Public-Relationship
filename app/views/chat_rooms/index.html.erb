@@ -1,0 +1,12 @@
+<!-- app/views/chats/index.html.erb -->
+<h1>My Chats</h1>
+
+<ul id="chat_rooms">
+  <% @chat_rooms.each do |chat_room| %>
+    <li>
+      <%= link_to chat_room.name, chat_room_path(chat_room) %>
+      <br>
+      <small>with <%= chat_room.other_user(current_user).name %></small>
+    </li>
+  <% end %>
+</ul>

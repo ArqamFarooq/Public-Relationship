@@ -1,0 +1,31 @@
+
+<% @posts.each do |post| %>
+    <h1><%= post.user.first_name + ' ' + post.user.last_name %></h1>
+  <div class="post">
+    <h2><%= post.title %></h2>
+    <% post.images.each do |image| %>
+      <%= image_tag image.image_url, class: "post-image" %>
+    <% end %>
+    <p><%= post.body %></p>
+    <% if @chat_room.blank? %>
+      <% @chat_room = ChatRoom.create(post_id: post.id) %>
+    <% end %>
+    <div id="messages"></div>
+    <%= form_tag "/chat_rooms/#{@chat_room.id}/send_message", id: "new_message" do %>
+      <%= text_field_tag :message, nil, placeholder: "Enter your message..." %>
+      <%= submit_tag "Send" %>
+    <% end %>
+  </div>
+    <br>
+    <br>
+    <br>
+<% end %>
+
+<script>
+  $(document).on('submit', '#new_message', function(e) {
+    e.preventDefault();
+    var message = $('#new_message').find('input[name="message"]').val();
+    App.chat_room.receive({ message: message });
+    $('#new_message').find('input[name="message"]').val('');
+  });
+</script>

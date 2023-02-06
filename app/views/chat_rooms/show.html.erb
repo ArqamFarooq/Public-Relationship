@@ -1,0 +1,25 @@
+<!-- app/views/chat_rooms/show.html.erb -->
+<div id="messages">
+  <%= render @chat_room.messages %>
+</div>
+
+<%= form_with model: [@chat_room, Message.new], remote: true do |form| %>
+  <%= form.text_field :body %>
+  <%= form.submit %>
+<% end %>
+
+<%= javascript_tag do %>
+  App.chat_room = App.cable.subscriptions.create({
+    channel: 'ChatRoomChannel',
+    id: '<%= @chat_room.id %>'
+    }, {
+    connected: function() {},
+    disconnected: function() {},
+    received: function(data) {
+      $('#messages').append(data.message);
+    },
+    receive: function(data) {
+      return this.perform('receive', data);
+    }
+  });
+<% end %>
