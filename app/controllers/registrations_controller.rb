@@ -5,9 +5,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     @user = current_user
-    if @user.update(user_params)
+    if @user.update_without_password(user_params)
       @user.profile_image = params[:user][:profile_image]
-      byebug
       @user.save
       redirect_to root_path, notice: 'Your profile was successfully updatedddddddddddddddd.'
     else
