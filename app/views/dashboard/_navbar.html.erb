@@ -1,17 +1,31 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top " id="mainNav">
   <div class="container-fluid">
-    <%= link_to 'PR Advisor', dashboard_index_path, class:'heading navbar-brand'%>
+    <%= link_to 'Public Relation Advisor', dashboard_index_path, class:"navbar-brand"%>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <% if !user_signed_in? %>
+          <ul class="navbar-nav ms-auto my-2 my-lg-0">
+              <li class="nav-item"><%= link_to "About", dashboard_index_path+"#about", class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "Services", dashboard_index_path+"#services", class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "Portfolio", dashboard_index_path+"#portfolio", class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to "Contact", dashboard_index_path+"#contact", class: "nav-link" %></li>
+          </ul>
+        <% end %>
+      </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse auth pad" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
        
-        <li class="nav-item">
-            <%= link_to "Home", posts_path,  class: "nav-link text active" %>
-        </li>
 
         <% if user_signed_in? %>
+        <li class="nav-item">
+            <%= link_to "Home", dashboard_index_path,  class: "nav-link text active" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Dashboard", posts_path,  class: "nav-link text active" %>
+        </li>
 
         <li class="nav-item">
             <%= link_to "Profile", edit_user_registration_path,  class: "nav-link text active" %>
@@ -22,7 +36,7 @@
         </li>
 
         <li class="nav-item">
-            <%= link_to "Chat", chats_path,  class: "nav-link text active" %>
+            <%= link_to "Chat", new_chat_room_path,  class: "nav-link text active" %>
         </li>
 
         <li class="navbar-user nav-item">
@@ -32,7 +46,7 @@
         </li>
 
           <li class="nav-item pad">
-            <%= link_to "Sign Out", destroy_user_session_path, method: :delete,  class: "nav-link btn btn-outline-success" %>
+            <%= link_to "Sign Out", destroy_user_session_path ,  class: "nav-link btn btn-outline-success" %>
           </li>
 
         <% else %>

@@ -1,9 +1,0 @@
-<h1>My Chats</h1>
-
-<ul>
-  <% @chats.each do |chat| %>
-    <li><%= link_to chat.room, chat %></li>
-  <% end %>
-</ul>
-
-<%= link_to 'New Chat', new_chat_path %>

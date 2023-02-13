@@ -1,25 +1,29 @@
 <!-- app/views/chat_rooms/show.html.erb -->
-<div id="messages">
-  <%= render @chat_room.messages %>
+<div id="msgs">
+  <%= render @chat_room.msgs %>
 </div>
 
-<%= form_with model: [@chat_room, Message.new], remote: true do |form| %>
+<%= form_for [@chat_room, Msg.new], local: true do |form| %>
   <%= form.text_field :body %>
-  <%= form.submit %>
+  <%= form.submit 'Send', data: {disable_with: false} %>
 <% end %>
 
 <%= javascript_tag do %>
+  document.getElementById('new_msg').addEventListener('submit', function(e){
+    e.preventDefault()
+    const data = new FormData(e.currentTarget)
+    const body = data.get('msg[body]')
+    const chat_room_id = <%= @chat_room.id %>
+    App.chat_room.send({body, chat_room_id})
+  })
   App.chat_room = App.cable.subscriptions.create({
     channel: 'ChatRoomChannel',
     id: '<%= @chat_room.id %>'
     }, {
-    connected: function() {},
-    disconnected: function() {},
+    connected: function() {console.log('connected to chat room')},
+    disconnected: function() {console.log('disconnected from chat room')},
     received: function(data) {
-      $('#messages').append(data.message);
-    },
-    receive: function(data) {
-      return this.perform('receive', data);
+      document.getElementById('msgs').innerHTML += data.msg;
     }
   });
 <% end %>
