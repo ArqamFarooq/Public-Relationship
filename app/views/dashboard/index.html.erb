@@ -42,10 +42,9 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
-                        <h2 class="text-white mb-4">Built with Bootstrap 5</h2>
+                        <h2 class="text-white mb-4">Built Public Relations With Us</h2>
                         <p class="text-white-50">
                             Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-                            <a href="https://startbootstrap.com/theme/grayscale/">the preview page.</a>
                             The theme is open source, and you can use it for any purpose, personal or commercial.
                         </p>
                         <a class="btn btn-light btn-xl" href="#services">Get Started!</a>
@@ -144,10 +143,10 @@
         <div class="py-5">
         <div class="container">
           <div class="row align-items-center">
-            <% [["microsoft", "Microsoft Logo"], ["google", "Google Logo"], ["facebook", "Facebook Logo"], ["ibm", "IBM Logo"]].each do |logo| %>
+            <% [["microsoft", "Microsoft Logo", "https://www.microsoft.com/en-pk"], ["google", "Google Logo", "https://www.google.com/"], ["facebook", "Facebook Logo", "https://www.facebook.com/"], ["ibm", "IBM Logo", "https://www.ibm.com/us-en/"]].each do |logo| %>
               <div class="col-md-3 col-sm-6 my-3">
-                <%= link_to "#!", class: "img-brand d-block mx-auto" do %>
-                  <%= image_tag "logos/#{logo[0]}.svg", alt: "...", class: "img-fluid", aria: { label: logo[1] } %>
+                <%= link_to logo[2], class: "img-brand d-block mx-auto" do %>
+                  <%= image_tag "logos/#{logo[0]}.svg", alt: logo[2], class: "img-fluid", aria: { label: logo[1] } %>
                 <% end %>
               </div>
             <% end %>
@@ -164,7 +163,7 @@
                                 <i class="fas fa-map-marked-alt text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Address</h4>
                                 <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+                                <div class="small text-black-50">Johar Town, Lahore</div>
                             </div>
                         </div>
                     </div>
@@ -174,7 +173,7 @@
                                 <i class="fas fa-envelope text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Email</h4>
                                 <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50"><a href="#!">hello@yourdomain.com</a></div>
+                                <div class="small text-black-50"><a href="#!">PRAdvisor@gmail.com</a></div>
                             </div>
                         </div>
                     </div>
@@ -184,15 +183,15 @@
                                 <i class="fas fa-mobile-alt text-primary mb-2"></i>
                                 <h4 class="text-uppercase m-0">Phone</h4>
                                 <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50">+1 (555) 902-8832</div>
+                                <div class="small text-black-50">+92 (309) 7946938</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="social d-flex justify-content-center">
-                    <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                    <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                    <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+                    <a class="mx-2" href="https://twitter.com/?lang=en"><i class="fab fa-twitter"></i></a>
+                    <a class="mx-2" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a class="mx-2" href="https://github.com/"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </section>
