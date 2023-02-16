@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :acc_type, presence: true
   mount_uploader :profile_image, ImageUploader
   has_and_belongs_to_many :chats
   has_many :messages, through: :chats

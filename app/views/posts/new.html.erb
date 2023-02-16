@@ -1,22 +1,29 @@
-<%= form_with url: posts_path, local: true do |form| %>
-    <div class="form-group">
-        <%= form.label :title %>
-        <%= form.text_field :title, class: 'form-control' %>
+
+<div class="container show-margin">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= form_with url: posts_path, local: true do |form| %>
+        <div class="form-group">
+          <h3><%= form.label :title %></h3>
+          <%= form.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= form.label :body %>
+          <%= form.text_area :body, class: 'form-control', rows: "5" %>
+        </div>
+        <div class="form-group">
+            <%= form.label :image %>
+            <%= form.file_field :image, multiple: true, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= form.label :video %>
+            <%= form.file_field :video, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= form.hidden_field :user_id, value: current_user.id %>
+          <%= form.submit "Create Post", class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
-    <div class="form-group">
-        <%= form.label :body %>
-        <%= form.text_area :body, class: 'form-control', rows: "5" %>
-    </div>
-    <div class="form-group">
-        <%= form.label :image %>
-        <%= form.file_field :image, multiple: true, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-        <%= form.label :video %>
-        <%= form.file_field :video, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-        <%= form.submit "Create Post", class: "btn btn-primary" %>
-    </div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-<% end %>
+  </div>
+</div>
