@@ -1,17 +1,22 @@
 <% @posts.each do |post| %>
   <div class="post-container">
-    <h1 class="post-user-name"><%= post.user.first_name + ' ' + post.user.last_name %></h1>
     <div class="post">
-      <h2 class="post-title"><%= post.title %></h2>
+      <div class="user-avatar">
+        <%= image_tag post.user.profile_image.url(:thumb), alt: "User Avatar" %>   
+        <%= post.user.first_name %>  <%= post.user.last_name%>
+      </div>
       <div class="post-images">
-        <% post.images.each do |image| %>
-          <%= image_tag image.image_url, class: "post-image" %>
+        <% if post.images %>
+            <% post.images.each do |image| %>
+              <%= image_tag image.image_url, class: "post-image" %>
+            <% end %>
         <% end %>
       </div>
+      <h2 class="post-title"><%= post.title %></h2>
       <p class="post-body"><%= post.body %></p>
       <% if @chat_room.blank? %>
         <% @chat_room = ChatRoom.create(user_one_id: post.user.id) %>
       <% end %>
-      
+      </div>
   </div>
 <% end %>

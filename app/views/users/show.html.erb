@@ -1,12 +1,37 @@
 <div class="container show-margin user-info">
-  <div class="user-avatar">
-    <%= image_tag @user.profile_image.url, alt: "User Avatar" %>    
+  <div class="row">
+    <div class="col-md-4">
+      <div class="user-avatar">
+        <%= image_tag @user.profile_image.url, alt: "User Avatar" %>    
+      </div>
+      <div class="user-details">
+        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+        <p><strong>Email:</strong> <%= @user.email %></p>
+        <p><strong>Phone:</strong> <%= @user.phone %></p>
+        <p><strong>Account Type:</strong> <%= @user.acc_type %></p>
+        <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary edit_margin" %>
+      </div>
+    </div>
+    <div class="row-md-2">
+      <h2>Posts by <%= @user.first_name %></h2>
+      <% @user.posts.each do |post| %>   
+         <div class="post">
+            <div class="user-avatar">
+                <%= image_tag @user.profile_image.url(:thumb), alt: "User Avatar" %>   
+                <%= @user.first_name %>  <%= @user.last_name%>
+            </div>
+            <div class="post-images">
+                <% if post.images %>
+                    <%= image_tag post.images.first.image_url, class: "post-image" %>
+                <% end %>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%= post.title %></h5>
+                <p class="card-text"><%= truncate(post.body, length: 150) %></p>
+                <%= link_to "Read more", post_path(post), class: "btn btn-primary" %>
+            </div>
+      </div>
+      <% end %>
+    </div>
   </div>
-  <div class="user-details">
-    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-    <p><strong>Email:</strong> <%= @user.email %></p>
-    <p><strong>Phone:</strong> <%= @user.phone %></p>
-    <p><strong>Account Type:</strong> <%= @user.acc_type %></p>
-  </div>
-    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary edit_margin" %>
 </div>
