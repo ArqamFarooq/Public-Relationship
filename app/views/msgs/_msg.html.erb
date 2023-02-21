@@ -1,2 +1,8 @@
-<h1><%= msg.user.first_name %></h1>
-<p><%= msg.body %></p>
+<% if msg.user_id == current_user.id %>
+  <div class="message-right" id="msg-<%=msg.id%>">
+<% else %>
+  <div class="message-left" id="msg-<%=msg.id%>">
+<% end %>
+  <h1><%= msg.user.first_name %></h1>
+  <p><%= msg.body %></p>
+</div>

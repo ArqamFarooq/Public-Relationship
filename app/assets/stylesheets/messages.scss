@@ -19,4 +19,36 @@
     border-radius: 5px;
     padding: 10px;
   }
+  #msg-form-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1;
+
+  }
+  
+  #msg-form-container form {
+    width: 100%;
+    box-sizing: border-box;
+  }
+.send-right{
+    float: right;
+    clear: both;
+    margin-left: 10px;
+    background-color: #33ff00;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 10px;
+}
+.chat-pad{
+    margin-bottom: 100px;
+}
+#msgs {
+    height: 780px;
+    overflow-y: scroll;
+  }
   

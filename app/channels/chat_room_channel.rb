@@ -1,24 +1,15 @@
 # app/channels/chat_room_channel.rb
 class ChatRoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "chat_room:#{params[:id]}"
-  end
-
-  def receive(data)
-    chat_room = ChatRoom.find(data['chat_room_id'])
-    msg = chat_room.msgs.create!(
-      body: data['body'],
-      user: current_user
-    )
-    ActionCable.server.broadcast("chat_room:#{data['chat_room_id']}", msg: render_message(msg))
-  end
-
-  private
-
-  def render_message(msg)
-    ApplicationController.render(
-      partial: 'msgs/msg',
-      locals: { msg: msg }
-    )
+    current_chat = ChatRoom.find(params[:id])
+    stream_for current_chat, coder: ActiveSupport::JSON do |message|
+      append_data = {}
+      if message['sender_id'] == current_user.id
+        append_data = { msg_class: 'message-right' }
+      else
+        append_data = { msg_class: 'message-left' }
+      end
+      transmit message.merge(append_data)
+    end
   end
 end

@@ -1,21 +1,17 @@
 <!-- app/views/chat_rooms/show.html.erb -->
-<div id="msgs">
+
+<div id="msgs" class= "c">
   <%= render @chat_room.msgs %>
 </div>
-
-<%= form_for [@chat_room, Msg.new], local: true do |form| %>
-  <%= form.text_field :body %>
-  <%= form.submit 'Send', data: {disable_with: false} %>
+<div id="msg-form-container">
+<%= form_for [@chat_room, Msg.new], remote: true do |form| %>
+  <%= form.text_field :body, class: "form-control" %>
+  <%= form.submit 'Send', data: {disable_with: false}, class: "send-right" %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
 <% end %>
+</div>
 
 <%= javascript_tag do %>
-  document.getElementById('new_msg').addEventListener('submit', function(e){
-    e.preventDefault()
-    const data = new FormData(e.currentTarget)
-    const body = data.get('msg[body]')
-    const chat_room_id = <%= @chat_room.id %>
-    App.chat_room.send({body, chat_room_id})
-  })
   App.chat_room = App.cable.subscriptions.create({
     channel: 'ChatRoomChannel',
     id: '<%= @chat_room.id %>'
@@ -23,7 +19,9 @@
     connected: function() {console.log('connected to chat room')},
     disconnected: function() {console.log('disconnected from chat room')},
     received: function(data) {
+      console.log(data)
       document.getElementById('msgs').innerHTML += data.msg;
+      document.getElementById(`msg-${data.msg_id}`).classList = data.msg_class
     }
   });
 <% end %>
