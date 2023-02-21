@@ -1,7 +1,7 @@
 class ChatRoomsController < ApplicationController
 
   def index
-    @chat_rooms = current_user.chat_rooms
+    @chat_rooms = ChatRoom.where.not(user_one_id: nil, user_two_id: nil).where("user_one_id = ? OR user_two_id = ?", current_user.id, current_user.id)
   end
 
   def show

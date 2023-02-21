@@ -1,12 +1,12 @@
 <!-- app/views/chats/index.html.erb -->
 <h1>My Chats</h1>
 
+<div class = "container" >
 <ul id="chat_rooms">
   <% @chat_rooms.each do |chat_room| %>
-    <li>
-      <%= link_to chat_room.name, chat_room_path(chat_room) %>
-      <br>
-      <small>with <%= chat_room.other_user(current_user).name %></small>
+    <li class="chat-room">
+      <h3><%= link_to image_tag(chat_room.other_users(current_user.id).first.profile_image.url(:thumb)) + "  " + chat_room.other_users(current_user.id).first.first_name , chat_room_path(chat_room) %></h3>
     </li>
   <% end %>
 </ul>
+</div>

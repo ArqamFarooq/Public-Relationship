@@ -1,0 +1,9 @@
+<div class="user-avatar">
+    <%= image_tag user.profile_image.url, alt: "User Avatar" %>    
+</div>
+<div class="user-details">
+    <h2><%= user.first_name %> <%= user.last_name %></h2>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <p><strong>Phone:</strong> <%= user.phone %></p>
+    <p><strong>Account Type:</strong> <%= user.acc_type %></p>
+</div>
