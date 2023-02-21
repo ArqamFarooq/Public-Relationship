@@ -1,3 +1,22 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.message-left {
+    float: left;
+    clear: both;
+    margin-right: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .message-right {
+    float: right;
+    clear: both;
+    margin-left: 10px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  

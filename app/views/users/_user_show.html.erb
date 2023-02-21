@@ -1,5 +1,7 @@
 <div class="user-avatar">
-    <%= image_tag user.profile_image.url, alt: "User Avatar" %>    
+    <% if user.profile_image.url %>
+        <%= image_tag user.profile_image.url, alt: "User Avatar" %>    
+    <% end %>
 </div>
 <div class="user-details">
     <h2><%= user.first_name %> <%= user.last_name %></h2>

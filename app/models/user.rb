@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :confirmable
   
+  enum acc_type: [:influncer, :businessman, :admin]
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :acc_type, presence: true

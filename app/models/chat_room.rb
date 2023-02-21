@@ -1,5 +1,5 @@
 class ChatRoom < ApplicationRecord
-  has_many :msgs
+  has_many :msgs, dependent: :destroy
 
   def other_user(current_user)
     users.where.not(id: current_user.id).first

@@ -21,6 +21,7 @@ gem 'mini_magick', '~> 4.10'
 gem "font-awesome-sass", "~> 6.2.1"
 gem 'ffmpeg'
 gem 'carrierwave-video-thumbnailer'
+gem 'rails_admin'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

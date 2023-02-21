@@ -2,10 +2,17 @@
 <h1>My Chats</h1>
 
 <div class = "container" >
+<%= link_to 'New Chat', new_chat_room_path, class: 'btn btn-primary' %>
+
 <ul id="chat_rooms">
   <% @chat_rooms.each do |chat_room| %>
+    <% dp = chat_room.other_users(current_user.id).first.profile_image.url %>
     <li class="chat-room">
+      <% if dp%>
       <h3><%= link_to image_tag(chat_room.other_users(current_user.id).first.profile_image.url(:thumb)) + "  " + chat_room.other_users(current_user.id).first.first_name , chat_room_path(chat_room) %></h3>
+      <% else%>
+      <h3><%= link_to chat_room.other_users(current_user.id).first.first_name , chat_room_path(chat_room) %></h3>
+      <% end %>
     </li>
   <% end %>
 </ul>

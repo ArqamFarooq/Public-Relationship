@@ -1,8 +1,20 @@
 <!-- app/views/chats/new.html.erb -->
-<h1>New Chat</h1>
+<h1 class="text-center mb-5">New Chat</h1>
 
-<%= form_for @chat_room, local: true, method: :post do |form| %>
-  <%= form.label :user_two_id %>
-  <%= form.select :user_two_id, User.pluck(:first_name, :id) %>
-  <%= form.submit %>
-<% end %>
+<div class="row">
+  <% users = User.all %>
+  <% users.each do |user| %>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">
+            <% if user.profile_image.url %>
+              <%= image_tag(user.profile_image.url(:thumb))%>
+            <% end %>
+            <%= user.first_name %></h5>
+          <%= link_to "Start Chat", chat_rooms_path(user_two_id: user.id), method: :post, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -5,6 +5,8 @@
       <% if @user.id == current_user.id %>
       <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary edit_margin" %>
       <% end %>
+      <%= link_to "New Chat", chat_rooms_path(user_two_id: @user.id), method: :post, class: "btn btn-success edit_margin" %>
+
     </div>
     <div class="row-md-2">
       <h2>Posts by <%= @user.first_name %></h2>
